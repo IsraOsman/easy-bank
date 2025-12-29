@@ -87,7 +87,7 @@ public class AccountsController {
             )
     })
     @PutMapping("/update")
-    public ResponseEntity<ResponseDto> updateAccount(@RequestBody CustomerDto customerDto){
+    public ResponseEntity<ResponseDto> updateAccount(@Valid @RequestBody CustomerDto customerDto){
         boolean isUpdated = iAccountsService.updateAccount(customerDto);
 
         if(isUpdated) {
@@ -132,7 +132,7 @@ public class AccountsController {
         } else {
             return ResponseEntity
                     .status(HttpStatus.OK)
-                    .body( new ResponseDto(AccountsConstants.STATUS_417, AccountsConstants.MESSAGE_417_DELETE));
+                    .body(new ResponseDto(AccountsConstants.STATUS_417, AccountsConstants.MESSAGE_417_DELETE));
         }
     }
 }
